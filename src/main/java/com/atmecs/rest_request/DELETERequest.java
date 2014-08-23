@@ -10,9 +10,9 @@ public class DELETERequest extends RestRequestImpl {
 
 	String uri;
 	String responseMediaType;
-	HashMap<String, String> queryParam;
-	HashMap<String, String> headerParam;
-	HashMap<String, String> pathParam;
+	HashMap<String, String> queryParam = new HashMap<String, String>();
+	HashMap<String, String> headerParam = new HashMap<String, String>();
+	HashMap<String, String> pathParam = new HashMap<String, String>();
 	
 	@Override
 	public void setUri(String uri) {

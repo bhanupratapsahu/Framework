@@ -17,7 +17,6 @@ public class RestController {
 	
 	public void getFile(String filePath) {
 		jsonPath = parseFile.parseJSONFile(filePath);
-		
 	}
 
 }

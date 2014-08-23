@@ -10,9 +10,9 @@ public class GETRequest extends RestRequestImpl {
 
 	String uri;
 	String responseMediaType;
-	HashMap<String, String> queryParam;
-	HashMap<String, String> headerParam;
-	HashMap<String, String> pathParam;
+	Map<String, String> queryParam = new HashMap<String, String>();
+	Map<String, String> headerParam = new HashMap<String, String>();
+	Map<String, String> pathParam = new HashMap<String, String>();
 	
 	@Override
 	public void setUri(String uri) {
