@@ -1,7 +1,5 @@
 package com.atmecs.controllers;
 
-import java.util.Map;
-
 import static com.jayway.restassured.RestAssured.given;
 
 import com.atmecs.common_interfaces.Request;
@@ -19,7 +17,6 @@ public class ProcessRequest {
 
 	private Response response;
 	String uri;
-
 	
 	//Method to make the request according to request type
 	public Response process(Request request) {
