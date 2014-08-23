@@ -3,7 +3,7 @@
  */
 package com.atmecs.rest_request;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import com.atmecs.common_interfaces.Request;
 
@@ -21,16 +21,16 @@ public interface RestRequest extends Request {
 
 	public String getBody();
 
-	public void setHeaderParam(String key, String value);
+	public void setHeaderParam(Map<String, String> map);
 
-	public HashMap<String, String> getHeaderParam();
+	public Map<String, String> getHeaderParam();
 
-	public void setpathParam(String key, String value);
+	public void setPathParam(Map<String, String> map);
 
-	public HashMap<String, String> getPathParam();
+	public Map<String, String> getPathParam();
 
-	public void setQueryParam(String key, String value);
+	public void setQueryParam(Map<String, String> map);
 
-	public HashMap<String, String> getQueryParam();
+	public Map<String, String> getQueryParam();
 
 }

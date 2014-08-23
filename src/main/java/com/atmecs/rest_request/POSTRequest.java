@@ -3,16 +3,16 @@
  */
 package com.atmecs.rest_request;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class POSTRequest extends RestRequestImpl{
 
 	String uri;
 	String responseMediaType;
 	String requestMediaType;
-	HashMap<String, String> queryParam;
-	HashMap<String, String> headerParam;
-	HashMap<String, String> pathParam;
+	Map<String, String> queryParam;
+	Map<String, String> headerParam;
+	Map<String, String> pathParam;
 	String body;
 	
 	@Override
@@ -35,42 +35,52 @@ public class POSTRequest extends RestRequestImpl{
 		this.responseMediaType = mediaType;
 	}
 
+	@Override
 	public String getRequestMediaType() {
 		return requestMediaType;
 	}
 
+	@Override
 	public void setRequestMediaType(String mediaType) {
 		this.requestMediaType = mediaType;
 	}
 
-	public HashMap<String, String> getQueryParam() {
+	@Override
+	public Map<String, String> getQueryParam() {
 		return queryParam;
 	}
 	
-	public void setQueryParam(String key, String value) {
-		this.queryParam.put(key, value);
+	@Override
+	public void setQueryParam(Map<String, String> map) {
+		this.queryParam.putAll(map);
 	}
 
-	public HashMap<String, String> getHeaderParam() {
+	@Override
+	public Map<String, String> getHeaderParam() {
 		return headerParam;
 	}
 
-	public void setHeaderParam(String key, String value) {
-		this.headerParam.put(key, value);
+	@Override
+	public void setHeaderParam(Map<String, String> map) {
+		this.headerParam.putAll(map);
 	}
 
-	public HashMap<String, String> getPathParam() {
+	@Override
+	public Map<String, String> getPathParam() {
 		return pathParam;
 	}
 
-	public void setPathParam(String key, String value) {
-		this.pathParam.put(key, value);
+	@Override
+	public void setPathParam(Map<String, String> map) {
+		this.pathParam.putAll(map);
 	}
 
+	@Override
 	public String getBody() {
 		return body;
 	}
 
+	@Override
 	public void setBody(String body) {
 		this.body = body;
 	}
