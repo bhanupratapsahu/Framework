@@ -3,7 +3,7 @@
  */
 package com.atmecs.rest_request;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public abstract class RestRequestImpl implements RestRequest{
 
@@ -44,37 +44,37 @@ public abstract class RestRequestImpl implements RestRequest{
 	}
 
 	@Override
-	public void setHeaderParam(String key, String value) {
+	public void setHeaderParam(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public HashMap<String, String> getHeaderParam() {
+	public Map<String, String> getHeaderParam() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setpathParam(String key, String value) {
+	public void setPathParam(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public HashMap<String, String> getPathParam() {
+	public Map<String, String> getPathParam() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setQueryParam(String key, String value) {
+	public void setQueryParam(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public HashMap<String, String> getQueryParam() {
+	public Map<String, String> getQueryParam() {
 		// TODO Auto-generated method stub
 		return null;
 	}
