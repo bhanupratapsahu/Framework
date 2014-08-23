@@ -11,7 +11,7 @@ import com.jayway.restassured.path.json.JsonPath;
 
 public class RequestCreator {
 
-	Map<String, String> map = new HashMap<String, String>();
+	private Map<String, String> map = new HashMap<String, String>();
 
 
 	public GETRequest createGETRequest(JsonPath jsonPath) {
