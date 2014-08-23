@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <test name="Test">
+  <parameter name="filePath" value="/home/bhanu/Documents/testcase.json"/> 
+    <classes>
+      <class name="com.atmecs.controllers.RestController"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
