@@ -3,6 +3,7 @@
  */
 package com.atmecs.rest_request;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class PUTRequest extends RestRequestImpl {
@@ -11,9 +12,9 @@ public class PUTRequest extends RestRequestImpl {
 	String uri;
 	String responseMediaType;
 	String requestMediaType;
-	Map<String, String> queryParam;
-	Map<String, String> headerParam;
-	Map<String, String> pathParam;
+	Map<String, String> queryParam = new HashMap<String, String>();
+	Map<String, String> headerParam = new HashMap<String, String>();
+	Map<String, String> pathParam = new HashMap<String, String>();
 	String body;
 	
 	@Override

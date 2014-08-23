@@ -9,6 +9,10 @@ import com.atmecs.rest_request.POSTRequest;
 import com.atmecs.rest_request.PUTRequest;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.response.Response;
+import com.jayway.restassured.specification.RequestSpecification;
+
+//import static com.jayway.restassured.RestAssured.get;
+import static com.jayway.restassured.RestAssured.given;
 
 
 
@@ -70,7 +74,10 @@ public class ProcessRequest {
 			builder.setContentType(contentType);
 		}
 		
-		response = builder.build().post(uri);
+		RequestSpecification requestSpecification =  builder.build();
+		response = given().
+						spec(requestSpecification).
+						when().post(uri);
 	}
 
 	public void processPUT(Request request) {
@@ -94,7 +101,10 @@ public class ProcessRequest {
 			builder.setContentType(contentType);
 		}
 		
-		response = builder.build().put(uri);
+		RequestSpecification requestSpecification =  builder.build();
+		response = given().
+						spec(requestSpecification).
+						when().put(uri);
 	}
 
 	public void processDELETE(Request request) {
@@ -110,7 +120,10 @@ public class ProcessRequest {
 			builder.addHeaders(headerParam);
 		}
 		
-		response = builder.build().delete(uri);
+		RequestSpecification requestSpecification =  builder.build();
+		response = given().
+						spec(requestSpecification).
+						when().delete(uri);
 	}
 	
 	public void processGET(Request request) {
@@ -118,21 +131,22 @@ public class ProcessRequest {
 		GETRequest getRequest = (GETRequest) request;
 		RequestSpecBuilder builder = new RequestSpecBuilder();
 		
-		if(getRequest.getUri() != null) {
-			uri = getRequest.getUri();
-		}
-		if(getRequest.getHeaderParam() != null) {
-			headerParam = getRequest.getHeaderParam();
-			builder.addHeaders(headerParam);
-		}
+		uri = getRequest.getUri();
 		
-		response = builder.build().get(uri);
+		if(!getRequest.getHeaderParam().isEmpty()) 
+			builder.addHeaders(getRequest.getHeaderParam());
+		
+		if(!getRequest.getPathParam().isEmpty()) 
+			builder.addPathParams(getRequest.getPathParam());
+		
+		if(!getRequest.getQueryParam().isEmpty()) 
+			builder.addQueryParams(getRequest.getQueryParam());
+		
+		RequestSpecification requestSpecification =  builder.build();
+		response = given().
+						spec(requestSpecification).
+						when().get(uri);
 		
 	}
 	
-	public static void main(String[] args) {
-		Request request = new POSTRequest();
-		ProcessRequest processRequest = new ProcessRequest();
-		processRequest.process(request);
-	}
 }
