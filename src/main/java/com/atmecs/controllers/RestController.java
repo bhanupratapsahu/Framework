@@ -1,5 +1,7 @@
 package com.atmecs.controllers;
 
+import java.util.Map;
+
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -8,6 +10,7 @@ import com.atmecs.common_interfaces.Request;
 import com.atmecs.common_interfaces.Response;
 import com.atmecs.parsers.JSONParser;
 import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Headers;
 
 
 public class RestController implements Controller {
@@ -21,14 +24,14 @@ public class RestController implements Controller {
 	public ProcessRequest processRequest = new ProcessRequest();
 	com.jayway.restassured.response.Response response;
 
-	 @Test
-	 @Parameters("filePath")
+	@Test
+	@Parameters("filePath")
 	public void restTest(String filePath) {
 
-		 System.out.println(filePath);
+		System.out.println(filePath);
 		jsonPath = jsonParser.parseJSONFile(filePath);
 
-		switch (jsonPath.getString("method")) {
+		switch (jsonPath.getString("method").toUpperCase()) {
 		case "GET":
 			request = requestCreator.createGETRequest(jsonPath);
 			break;
@@ -50,10 +53,13 @@ public class RestController implements Controller {
 			break;
 		}
 
-		
+
 		response = processRequest.process(request);
-		
+
+		//Headers headers = response.getHeaders();
+		Map<String, String> map = (Map<String, String>) response.getHeaders();
 		System.out.println(response.asString());
-		
+		System.out.println(map);
+
 	}
 }
