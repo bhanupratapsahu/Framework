@@ -7,6 +7,7 @@ import com.atmecs.rest_request.DELETERequest;
 import com.atmecs.rest_request.GETRequest;
 import com.atmecs.rest_request.POSTRequest;
 import com.atmecs.rest_request.PUTRequest;
+import com.atmecs.rest_response.RestResponseImpl;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
@@ -19,7 +20,7 @@ public class ProcessRequest {
 	String uri;
 	
 	//Method to make the request according to request type
-	public Response process(Request request) {
+	public RestResponseImpl process(Request request) {
 		
 		switch (request.getClass().getSimpleName()) {
 
@@ -40,10 +41,18 @@ public class ProcessRequest {
 				break;
 		}
 
-		return response;
+		return createResponse(response);
 	}
 
-	
+	private RestResponseImpl createResponse(Response response) {
+		
+		RestResponseImpl responseImpl = new RestResponseImpl();
+		
+		responseImpl.setHeaders(response.getHeaders());
+		responseImpl.setBody(response.getBody().asString());
+		
+		return responseImpl;
+	} 
 	
 	public void processGET(Request request) {
 
