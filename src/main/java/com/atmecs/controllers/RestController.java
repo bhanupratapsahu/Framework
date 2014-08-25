@@ -1,20 +1,15 @@
 package com.atmecs.controllers;
 
-<<<<<<< HEAD
-=======
-import java.util.Map;
-
-import org.testng.annotations.Optional;
->>>>>>> 2355bf7d45b75fb72127d02bcf067ab8cdaadc99
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.atmecs.assertions.Assertion;
+import com.atmecs.assertions.AssertionImpl;
 import com.atmecs.common_interfaces.Request;
 import com.atmecs.common_interfaces.Response;
 import com.atmecs.parsers.JSONParser;
 import com.atmecs.rest_response.RestResponseImpl;
 import com.jayway.restassured.path.json.JsonPath;
-import com.jayway.restassured.response.Headers;
 
 
 public class RestController implements Controller {
@@ -24,12 +19,12 @@ public class RestController implements Controller {
 	public RequestCreator requestCreator = new RequestCreator();	
 	public JSONParser jsonParser = new JSONParser();	
 	public Response response = new RestResponseImpl();	
-	public Assertion assertionObject;
+	public Assertion assertion = new AssertionImpl();
 	public ProcessRequest processRequest = new ProcessRequest();
 
 	@Test
 	@Parameters("filePath")
-	public void restTest(String filePath) {
+	public void restTest(String filePath) throws Exception {
 
 		System.out.println(filePath);
 		jsonPath = jsonParser.parseJSONFile(filePath);
@@ -58,7 +53,8 @@ public class RestController implements Controller {
 
 		System.out.println(request);
 		response = processRequest.process(request);
-
+		
+		((AssertionImpl)assertion).assertThat(response, jsonPath);
 
 	}
 }
