@@ -1,12 +1,14 @@
 package com.atmecs.FrameWork;
 
 import com.atmecs.common_interfaces.Request;
+import com.atmecs.common_interfaces.Response;
 import com.atmecs.controllers.ProcessRequest;
 import com.atmecs.controllers.RequestCreator;
 import com.atmecs.parsers.JSONParser;
 import com.atmecs.rest_request.GETRequest;
+import com.atmecs.rest_response.RestResponseImpl;
 import com.jayway.restassured.path.json.JsonPath;
-import com.jayway.restassured.response.Response;
+
 
 public class Test {
 	public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class Test {
 		Request request = getRequest;
 		ProcessRequest processRequest = new ProcessRequest();
 		Response response = processRequest.process(request);
-		System.out.println(response.body().asString());
+		System.out.println(((RestResponseImpl)response).getBody());
 	}
 
 }

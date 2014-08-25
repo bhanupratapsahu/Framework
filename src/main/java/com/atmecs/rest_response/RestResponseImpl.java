@@ -3,22 +3,21 @@
  */
 package com.atmecs.rest_response;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.jayway.restassured.response.Headers;
 
 public class RestResponseImpl implements RestResponse{
 
-	Map<String, String> headers = new HashMap<String, String>();
+	Headers headers;
 	String body;
 	
 	@Override
-	public Map<String, String> getHeaders() {
+	public Headers getHeaders() {
 		return headers;
 	}
 	
 	@Override
-	public void setHeaders(Map<String, String> headers) {
-		this.headers.putAll(headers);
+	public void setHeaders(Headers headers) {
+		this.headers = headers;
 		
 	}
 	
