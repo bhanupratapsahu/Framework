@@ -30,6 +30,32 @@
 		</plugins>
 	</build>
 	
+	
+	<developers>
+		<developer>
+			<name>Kalpesh</name>
+			<id>kalpesh.agale</id>
+			<organization>Atmecs</organization>
+			<organizationUrl>http://www.atmecs.com</organizationUrl>
+			<email>kalpesh.agale@gmail.com</email>
+			<timezone>+5:30</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Bhanu</name>
+			<id>bhanu.sahu</id>
+			<organization>Atmecs</organization>
+			<organizationUrl>http://www.atmecs.com</organizationUrl>
+			<email>bhanu.sahu@gmail.com</email>
+			<timezone>+5:30</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.jayway.restassured</groupId>
@@ -49,4 +75,6 @@
 			<version>6.8.7</version>
 		</dependency>
 	</dependencies>
+
+	
 </project>

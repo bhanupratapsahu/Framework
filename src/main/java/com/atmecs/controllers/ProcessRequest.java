@@ -8,7 +8,6 @@ import com.atmecs.rest_request.GETRequest;
 import com.atmecs.rest_request.POSTRequest;
 import com.atmecs.rest_request.PUTRequest;
 import com.jayway.restassured.builder.RequestSpecBuilder;
-import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
@@ -67,6 +66,7 @@ public class ProcessRequest {
 						spec(requestSpecification).
 				   when().
 				   		get(uri);
+		
 	}
 	
 	

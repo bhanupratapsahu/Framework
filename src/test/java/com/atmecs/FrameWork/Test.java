@@ -20,6 +20,7 @@ public class Test {
 		ProcessRequest processRequest = new ProcessRequest();
 		Response response = processRequest.process(request);
 		System.out.println(response.body().asString());
+		System.out.println(response.headers().iterator().next().getValue());
 	}
 
 }

@@ -1,8 +1,5 @@
 package com.atmecs.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.atmecs.rest_request.DELETERequest;
 import com.atmecs.rest_request.GETRequest;
 import com.atmecs.rest_request.POSTRequest;
@@ -10,9 +7,6 @@ import com.atmecs.rest_request.PUTRequest;
 import com.jayway.restassured.path.json.JsonPath;
 
 public class RequestCreator {
-
-	private Map<String, String> map = new HashMap<String, String>();
-
 
 	public GETRequest createGETRequest(JsonPath jsonPath) {
 
