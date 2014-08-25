@@ -1,7 +1,5 @@
 package com.atmecs.controllers;
 
-import java.util.Map;
-
 import static com.jayway.restassured.RestAssured.given;
 
 import com.atmecs.common_interfaces.Request;
@@ -11,7 +9,6 @@ import com.atmecs.rest_request.POSTRequest;
 import com.atmecs.rest_request.PUTRequest;
 import com.atmecs.rest_response.RestResponseImpl;
 import com.jayway.restassured.builder.RequestSpecBuilder;
-import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
@@ -21,7 +18,6 @@ public class ProcessRequest {
 
 	private Response response;
 	String uri;
-
 	
 	//Method to make the request according to request type
 	public RestResponseImpl process(Request request) {
@@ -79,6 +75,7 @@ public class ProcessRequest {
 						spec(requestSpecification).
 				   when().
 				   		get(uri);
+		
 	}
 	
 	

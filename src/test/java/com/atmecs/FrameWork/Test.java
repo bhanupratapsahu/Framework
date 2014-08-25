@@ -1,7 +1,6 @@
 package com.atmecs.FrameWork;
 
 import com.atmecs.common_interfaces.Request;
-import com.atmecs.common_interfaces.Response;
 import com.atmecs.controllers.ProcessRequest;
 import com.atmecs.controllers.RequestCreator;
 import com.atmecs.parsers.JSONParser;
@@ -20,8 +19,11 @@ public class Test {
 		GETRequest getRequest = requestCreator.createGETRequest(jsonPath);
 		Request request = getRequest;
 		ProcessRequest processRequest = new ProcessRequest();
-		Response response = processRequest.process(request);
-		System.out.println(((RestResponseImpl)response).getBody());
+		
+		RestResponseImpl response = processRequest.process(request);
+
+		System.out.println(response.getBody().toString());
+		System.out.println(response.getHeaders().iterator().next().getValue());
 	}
 
 }
