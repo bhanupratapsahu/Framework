@@ -57,7 +57,7 @@ public class AssertionImpl implements Assertion {
 
 		Set<String> set = bodyMap.keySet();
 		
-		Object responseMediaType = detectResponseMedia();
+		Object responseMediaType = detectResponseMediaType();
 		
 		 if (responseMediaType instanceof JsonPath)
 			 jsonPath = (JsonPath) responseMediaType;
@@ -78,7 +78,7 @@ public class AssertionImpl implements Assertion {
 		}
 	}
 
-	private Object detectResponseMedia() throws Exception {
+	private Object detectResponseMediaType() throws Exception {
 
 		if(responseMediaType.equalsIgnoreCase("application/json"))
 			return new JsonPath(body);
