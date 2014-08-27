@@ -54,7 +54,7 @@ public class RestController implements Controller {
 		System.out.println(request);
 		response = processRequest.processRequest(request);
 		
-		((AssertionImpl)assertion).assertThat(response, jsonPath);
+		((AssertionImpl)assertion).assertResponse(response, jsonPath);
 
 	}
 }

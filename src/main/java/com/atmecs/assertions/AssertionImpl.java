@@ -21,7 +21,7 @@ public class AssertionImpl implements Assertion {
 
 
 
-	public void assertThat(Response response, JsonPath testCaseFilePath) throws Exception {
+	public void assertResponse(Response response, JsonPath testCaseFilePath) throws Exception {
 
 		RestResponseImpl restResponseImpl = (RestResponseImpl) response;
 		headers = restResponseImpl.getHeaders();
@@ -61,7 +61,7 @@ public class AssertionImpl implements Assertion {
 		
 		 if (responseMediaType instanceof JsonPath)
 			 jsonPath = (JsonPath) responseMediaType;
-		 else
+		 else if (responseMediaType instanceof XmlPath)
 			 xmlPath = (XmlPath) responseMediaType;
 			
 
