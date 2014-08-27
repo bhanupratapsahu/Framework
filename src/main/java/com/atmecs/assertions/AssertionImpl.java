@@ -28,8 +28,8 @@ public class AssertionImpl implements Assertion {
 		body = restResponseImpl.getBody();
 		responseMediaType = testCaseFilePath.getString("mediatype.response");
 		
-		if(testCaseFilePath.get("assertions.headers") != null)
-			assertHeader(testCaseFilePath.getMap("assertions.headers", String.class, String.class));
+		if(testCaseFilePath.get("assertions.headerparam") != null)
+			assertHeader(testCaseFilePath.getMap("assertions.headerparam", String.class, String.class));
 		if(testCaseFilePath.get("assertions.body") != null)
 			assertBody(testCaseFilePath.getMap("assertions.body", String.class, String.class));
 			
