@@ -14,13 +14,13 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 
 
-public class ProcessRequest {
+public class RequestProcessor {
 
 	private Response response;
 	String uri;
 	
 	//Method to make the request according to request type
-	public RestResponseImpl process(Request request) {
+	public RestResponseImpl processRequest(Request request) {
 		
 		switch (request.getClass().getSimpleName()) {
 

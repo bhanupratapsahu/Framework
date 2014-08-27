@@ -20,7 +20,7 @@ public class RestController implements Controller {
 	public JSONParser jsonParser = new JSONParser();	
 	public Response response = new RestResponseImpl();	
 	public Assertion assertion = new AssertionImpl();
-	public ProcessRequest processRequest = new ProcessRequest();
+	public RequestProcessor processRequest = new RequestProcessor();
 
 	@Test
 	@Parameters("filePath")
@@ -52,7 +52,7 @@ public class RestController implements Controller {
 		}
 
 		System.out.println(request);
-		response = processRequest.process(request);
+		response = processRequest.processRequest(request);
 		
 		((AssertionImpl)assertion).assertThat(response, jsonPath);
 

@@ -1,7 +1,7 @@
 package com.atmecs.FrameWork;
 
 import com.atmecs.common_interfaces.Request;
-import com.atmecs.controllers.ProcessRequest;
+import com.atmecs.controllers.RequestProcessor;
 import com.atmecs.controllers.RequestCreator;
 import com.atmecs.parsers.JSONParser;
 import com.atmecs.rest_request.GETRequest;
@@ -18,9 +18,9 @@ public class Test {
 		
 		GETRequest getRequest = requestCreator.createGETRequest(jsonPath);
 		Request request = getRequest;
-		ProcessRequest processRequest = new ProcessRequest();
+		RequestProcessor processRequest = new RequestProcessor();
 		
-		RestResponseImpl response = processRequest.process(request);
+		RestResponseImpl response = processRequest.processRequest(request);
 
 		System.out.println(response.getBody().toString());
 		System.out.println(response.getHeaders().iterator().next().getValue());

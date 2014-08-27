@@ -56,7 +56,14 @@ public class AssertionImpl implements Assertion {
 	private void assertBody(Map<String, String> bodyMap) throws Exception {
 
 		Set<String> set = bodyMap.keySet();
-		detectResponseMedia();
+		
+		Object responseMediaType = detectResponseMedia();
+		
+		 if (responseMediaType instanceof JsonPath)
+			 jsonPath = (JsonPath) responseMediaType;
+		 else
+			 xmlPath = (XmlPath) responseMediaType;
+			
 
 		for (Iterator<String> iterator = set.iterator(); iterator.hasNext();) {
 			String bodyParam = (String) iterator.next();
@@ -71,12 +78,12 @@ public class AssertionImpl implements Assertion {
 		}
 	}
 
-	private void detectResponseMedia() throws Exception {
+	private Object detectResponseMedia() throws Exception {
 
 		if(responseMediaType.equalsIgnoreCase("application/json"))
-			jsonPath = new JsonPath(body);
+			return new JsonPath(body);
 		else if(responseMediaType.equalsIgnoreCase("application/xml"))
-			xmlPath = new XmlPath(body);
+			return new XmlPath(body);
 		else
 			throw new Exception("Invalid Response mediaType");
 	}
