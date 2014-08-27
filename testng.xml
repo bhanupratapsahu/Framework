@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
-  <test name="Test">
-  <parameter name="filePath" value="/home/bhanu/Documents/testcase.json"/> 
+  <test name="TestJson">
+  <parameter name="filePath" value="/home/bhanu/Documents/testcase/testcasejson.json"/> 
+    <classes>
+      <class name="com.atmecs.controllers.RestController"/>
+    </classes>
+  </test> <!-- Test -->
+   <test name="TestXml">
+  <parameter name="filePath" value="/home/bhanu/Documents/testcase/testcasexml.json"/> 
     <classes>
       <class name="com.atmecs.controllers.RestController"/>
     </classes>
