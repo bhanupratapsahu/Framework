@@ -3,32 +3,20 @@
  */
 package com.atmecs.rest_response;
 
-import com.jayway.restassured.response.Headers;
+import com.jayway.restassured.response.Response;
 
 public class RestResponseImpl implements RestResponse{
 
-	Headers headers;
-	String body;
-	
+	Response response;
+
 	@Override
-	public Headers getHeaders() {
-		return headers;
+	public Response getResponse() {
+		return this.response;
 	}
-	
+
 	@Override
-	public void setHeaders(Headers headers) {
-		this.headers = headers;
-		
-	}
-	
-	@Override
-	public String getBody() {
-		return body;
-	}
-	
-	@Override
-	public void setBody(String body) {
-		this.body = body;
+	public void setResponse(Response response) {
+		this.response = response;
 	}
 	
 	

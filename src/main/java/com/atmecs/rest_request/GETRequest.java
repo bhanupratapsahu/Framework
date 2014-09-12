@@ -27,7 +27,6 @@ public class GETRequest extends RestRequestImpl {
 	@Override
 	public void setResponseMediaType(String mediaType) {
 		this.responseMediaType = mediaType;
-		
 	}
 
 	@Override

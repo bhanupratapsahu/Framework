@@ -16,14 +16,17 @@ public class RequestCreator {
 
 		getRequest.setResponseMediaType(jsonPath.getString("mediatype.response"));
 
-		if(jsonPath.getMap("request.pathparam") != null)
-			getRequest.setPathParam(jsonPath.getMap("request.pathparam", String.class, String.class));
+		if(jsonPath.getMap("request") != null)
+		{
+			if(jsonPath.getMap("request.pathparam") != null)
+				getRequest.setPathParam(jsonPath.getMap("request.pathparam", String.class, String.class));
 
-		if(jsonPath.getMap("request.queryparam") != null)
-			getRequest.setQueryParam(jsonPath.getMap("request.queryparam", String.class, String.class));
+			if(jsonPath.getMap("request.queryparam") != null)
+				getRequest.setQueryParam(jsonPath.getMap("request.queryparam", String.class, String.class));
 
-		if(jsonPath.getMap("request.headerparam") != null)
-			getRequest.setHeaderParam(jsonPath.getMap("request.headerparam", String.class, String.class));
+			if(jsonPath.getMap("request.headerparam") != null)
+				getRequest.setHeaderParam(jsonPath.getMap("request.headerparam", String.class, String.class));
+		}
 
 		return getRequest;
 	}
@@ -57,7 +60,7 @@ public class RequestCreator {
 	public POSTRequest createPOSTRequest(JsonPath jsonPath) {
 
 		POSTRequest postRequest = new POSTRequest();
-		
+
 		postRequest.setUri(jsonPath.getString("uri"));
 
 		postRequest.setResponseMediaType(jsonPath.getString("mediatype.response"));
@@ -79,7 +82,7 @@ public class RequestCreator {
 	}
 
 	public DELETERequest createDELETERequest(JsonPath jsonPath) {
-		
+
 		DELETERequest deleteRequest = new DELETERequest();
 
 		deleteRequest.setUri(jsonPath.getString("uri"));
@@ -94,7 +97,7 @@ public class RequestCreator {
 
 		if(jsonPath.getMap("request.headerparam") != null)
 			deleteRequest.setHeaderParam(jsonPath.getMap("request.headerparam", String.class, String.class));
-		
+
 		return deleteRequest;
 	}
 

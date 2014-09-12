@@ -18,42 +18,41 @@ public class RequestProcessor {
 
 	private Response response;
 	String uri;
-	
+
 	//Method to make the request according to request type
 	public RestResponseImpl processRequest(Request request) {
-		
+
 		switch (request.getClass().getSimpleName()) {
 
-			case "GETRequest":
-					processGET(request);
-				break;
-			case "POSTRequest":
-					processPOST(request);
-				break;
-			case "PUTRequest":
-					processPUT(request);
-				break;
-			case "DELETERequest":
-					processDELETE(request);
-				break;
-			default:
-					System.out.println("Invalid request type");
-				break;
+		case "GETRequest":
+			processGET(request);
+			break;
+		case "POSTRequest":
+			processPOST(request);
+			break;
+		case "PUTRequest":
+			processPUT(request);
+			break;
+		case "DELETERequest":
+			processDELETE(request);
+			break;
+		default:
+			System.out.println("Invalid request type");
+			break;
 		}
 
 		return createResponse(response);
 	}
 
 	private RestResponseImpl createResponse(Response response) {
-		
+
 		RestResponseImpl responseImpl = new RestResponseImpl();
-		
-		responseImpl.setHeaders(response.getHeaders());
-		responseImpl.setBody(response.getBody().asString());
-		
+
+		responseImpl.setResponse(response);
+
 		return responseImpl;
 	} 
-	
+
 	public void processGET(Request request) {
 
 		GETRequest getRequest = (GETRequest) request;
@@ -72,80 +71,80 @@ public class RequestProcessor {
 
 		RequestSpecification requestSpecification = builder.build();
 		response = given().
-						spec(requestSpecification).
-				   when().
-				   		get(uri);
-		
+				spec(requestSpecification).
+				when().
+				get(uri);
+
 	}
-	
-	
+
+
 	public void processPOST(Request request) {
-		
+
 		POSTRequest postRequest = (POSTRequest) request;
 		RequestSpecBuilder builder = new RequestSpecBuilder();
-		
+
 		if(postRequest.getUri() != null)
 			uri = postRequest.getUri();
-		
+
 		if(!postRequest.getHeaderParam().isEmpty())
 			builder.addHeaders(postRequest.getHeaderParam());
-		
+
 		if(!postRequest.getBody().isEmpty())
 			builder.setBody(postRequest.getBody());
-		
+
 		if(!postRequest.getRequestMediaType().isEmpty())
 			builder.setContentType(postRequest.getRequestMediaType());
-		
+
 		RequestSpecification requestSpecification =  builder.build();
 		response = given().
-						spec(requestSpecification).
-				   when().
-				   		post(uri);
+				spec(requestSpecification).
+				when().
+				post(uri);
 	}
-	
+
 
 	public void processPUT(Request request) {
-		
+
 		PUTRequest putRequest = (PUTRequest) request;
 		RequestSpecBuilder builder = new RequestSpecBuilder();
-		
+
 		if(putRequest.getUri() != null) 
 			uri = putRequest.getUri();
-		
+
 		if(!putRequest.getHeaderParam().isEmpty())
 			builder.addHeaders(putRequest.getHeaderParam());
-		
+
 		if(!putRequest.getBody().isEmpty())
 			builder.setBody(putRequest.getBody());
-		
+
 		if(!putRequest.getRequestMediaType().isEmpty())
 			builder.setContentType(putRequest.getRequestMediaType());
-		
+
 		RequestSpecification requestSpecification =  builder.build();
 		response = given().
-						spec(requestSpecification).
-				   when().
-				   		put(uri);
+				spec(requestSpecification).
+				when().
+				put(uri);
 	}
 
-	
+
 	public void processDELETE(Request request) {
-		
+
 		DELETERequest deleteRequest = (DELETERequest) request;
 		RequestSpecBuilder builder = new RequestSpecBuilder();
-		
+
 		if(deleteRequest.getUri() != null)
 			uri = deleteRequest.getUri();
-	
+
 		if(!deleteRequest.getHeaderParam().isEmpty())
 			builder.addHeaders(deleteRequest.getHeaderParam());
-		
+
 		RequestSpecification requestSpecification =  builder.build();
 		response = given().
-						spec(requestSpecification).
-				   when().
-				   		delete(uri);
-		
+				spec(requestSpecification).
+				when().
+				delete(uri);
+
 	}
 
 }

@@ -8,8 +8,6 @@ import com.jayway.restassured.response.Headers;
 
 public interface RestResponse extends Response{
 
-	public Headers getHeaders();
-	public void setHeaders(Headers headers);
-	public String getBody();
-	public void setBody(String body);
+	public com.jayway.restassured.response.Response getResponse();
+	public void setResponse(com.jayway.restassured.response.Response response);
 }

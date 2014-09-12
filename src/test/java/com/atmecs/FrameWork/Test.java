@@ -22,8 +22,6 @@ public class Test {
 		
 		RestResponseImpl response = processRequest.processRequest(request);
 
-		System.out.println(response.getBody().toString());
-		System.out.println(response.getHeaders().iterator().next().getValue());
 	}
 
 }
